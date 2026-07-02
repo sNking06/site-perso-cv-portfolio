@@ -129,6 +129,8 @@ export interface CvData {
 }
 
 const siteUrl = import.meta.env.SITE;
+const basePath = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const withBasePath = (path: string) => `${basePath}${path.replace(/^\//, "")}`;
 
 export const cv: CvData = {
   profile: {
@@ -144,7 +146,7 @@ export const cv: CvData = {
     location: "Cannes",
     availability: "En veille",
     photo: {
-      src: "/images/profile.jpg",
+      src: withBasePath("/images/profile.jpg"),
       alt: "Photo de profil de Steven LEBLAN",
     },
   },
@@ -322,8 +324,8 @@ export const cv: CvData = {
     siteDescription:
       "Portfolio professionnel de Steven LEBLAN, technicien support et référent ITSM en veille sur l'IA et l'automatisation.",
     siteUrl,
-    ogImage: "/og-image.png",
-    cvPdfPath: "/cv.pdf",
+    ogImage: withBasePath("/og-image.png"),
+    cvPdfPath: withBasePath("/cv.pdf"),
   },
 };
 

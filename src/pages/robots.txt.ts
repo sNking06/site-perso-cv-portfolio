@@ -2,7 +2,8 @@ import type { APIRoute } from "astro";
 
 export const GET: APIRoute = () => {
   const siteUrl = import.meta.env.SITE;
-  const sitemapUrl = new URL("/sitemap-index.xml", siteUrl).toString();
+  const basePath = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+  const sitemapUrl = new URL(`${basePath}sitemap-index.xml`, siteUrl).toString();
 
   return new Response(`User-agent: *\nAllow: /\n\nSitemap: ${sitemapUrl}\n`, {
     headers: {
