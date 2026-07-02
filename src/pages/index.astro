@@ -12,17 +12,17 @@ import { cv } from "../data/cv";
 
 <BaseLayout>
   <Hero profile={cv.profile} meta={cv.meta} />
-  <SectionWrapper section={cv.sections.about}>
-    <About profile={cv.profile} />
+  <SectionWrapper section={cv.sections.projects}>
+    <Projects projects={cv.projects} />
   </SectionWrapper>
   <SectionWrapper section={cv.sections.skills}>
     <Skills skills={cv.skills} />
   </SectionWrapper>
+  <SectionWrapper section={cv.sections.about}>
+    <About profile={cv.profile} />
+  </SectionWrapper>
   <SectionWrapper section={cv.sections.experience}>
     <ExperienceTimeline experiences={cv.experiences} />
-  </SectionWrapper>
-  <SectionWrapper section={cv.sections.projects}>
-    <Projects projects={cv.projects} />
   </SectionWrapper>
   <SectionWrapper section={cv.sections.contact}>
     <Contact contact={cv.contact} socialLinks={cv.socialLinks} profile={cv.profile} />

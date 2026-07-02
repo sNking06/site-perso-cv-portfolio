@@ -137,14 +137,14 @@ export const cv: CvData = {
     firstName: "Steven",
     lastName: "LEBLAN",
     title: "Technicien Support & Référent ITSM",
-    tagline: "Fiabiliser le support IT au quotidien, et l'augmenter avec l'IA et l'automatisation.",
+    tagline: "Je construis des outils web et des automatisations avec les LLM — et j'aime en parler.",
     summary: [
-      "Technicien support et référent ITSM, j'interviens au quotidien en hotline comme en proximité : diagnostic, résolution d'incidents et accompagnement des utilisateurs.",
-      "Depuis 2021, je coordonne l'équipe informatique chez DCS EASYWARE, avec un objectif constant : une qualité de service fiable et mesurable.",
-      "Passionné de technologie, je me forme aux usages concrets des LLM : automatisation de tâches avec Power Automate, outillage du quotidien avec Codex et Claude, et applications web publiées sur GitHub.",
+      "Le jour, je fais tourner le support IT : hotline, proximité, coordination d'équipe et ITSM chez DCS EASYWARE depuis 2021.",
+      "Le reste du temps, j'expérimente avec les LLM : automatisations Power Automate, outillage du quotidien avec Codex et Claude, et applications web que je publie sur GitHub.",
+      "Ce site n'est pas un CV : c'est une vitrine de ce que je fabrique. Si un projet vous intrigue ou vous donne une idée, écrivez-moi — c'est exactement le but.",
     ],
     location: "Cannes",
-    availability: "En veille",
+    availability: "Ouvert aux échanges",
     photo: {
       src: withBasePath("/images/profile.jpg"),
       alt: "Photo de profil de Steven LEBLAN",
@@ -159,21 +159,21 @@ export const cv: CvData = {
     },
     skills: {
       id: "competences",
-      navLabel: "Compétences",
-      title: "Compétences",
-      intro: "Les domaines d'intervention clés en support, coordination et automatisation.",
+      navLabel: "Boîte à outils",
+      title: "Ma boîte à outils",
+      intro: "Ce que je pratique au quotidien, du support utilisateur aux LLM.",
     },
     experience: {
-      id: "experience",
-      navLabel: "Expérience",
-      title: "Expérience",
-      intro: "Le parcours professionnel, du support utilisateur à la coordination d'équipe.",
+      id: "parcours",
+      navLabel: "Parcours",
+      title: "Parcours",
+      intro: "D'où je viens : le fil rouge, c'est le support et l'envie de faire tourner les choses.",
     },
     projects: {
       id: "projets",
       navLabel: "Projets",
-      title: "Projets et réalisations",
-      intro: "Des applications web publiques, développées en autonomie et déployées sur GitHub Pages.",
+      title: "Ce que je construis",
+      intro: "Des applications web publiques, développées en autonomie avec l'aide des LLM et déployées sur GitHub Pages. Testez-les, le code est ouvert.",
     },
     credentials: {
       id: "formations",
@@ -184,8 +184,8 @@ export const cv: CvData = {
     contact: {
       id: "contact",
       navLabel: "Contact",
-      title: "Contact",
-      intro: "Les moyens de contact pour un échange professionnel.",
+      title: "Discutons",
+      intro: "Une question sur un projet, une idée à creuser, un retour ? Je réponds avec plaisir.",
     },
   },
   skills: [
@@ -364,9 +364,9 @@ export const cv: CvData = {
     { platform: "GitHub", url: "https://github.com/sNking06", label: "Profil GitHub" },
   ],
   meta: {
-    siteTitle: "Steven LEBLAN - Technicien Support & Référent ITSM",
+    siteTitle: "Steven LEBLAN - Outils web, automatisation & IA appliquée",
     siteDescription:
-      "Portfolio de Steven LEBLAN, technicien support et référent ITSM : support IT, coordination d'équipe, automatisation et IA appliquée.",
+      "Ce que je construis avec les LLM : applications web publiques, automatisations et expérimentations IA, par un pro du support IT. Venez discuter.",
     siteUrl,
     ogImage: withBasePath("/og-image.png"),
     cvPdfPath: withBasePath("/cv.pdf"),
@@ -374,9 +374,9 @@ export const cv: CvData = {
 };
 
 export const navigation = [
-  cv.sections.about,
-  cv.sections.skills,
-  cv.sections.experience,
   cv.sections.projects,
+  cv.sections.skills,
+  cv.sections.about,
+  cv.sections.experience,
   cv.sections.contact,
 ] as const;

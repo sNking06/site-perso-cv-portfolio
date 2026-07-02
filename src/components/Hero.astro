@@ -1,5 +1,4 @@
 ---
-import CVDownloadButton from "./CVDownloadButton.astro";
 import Icon from "./Icon.astro";
 import { PLACEHOLDER } from "../data/cv";
 import type { Meta, Profile } from "../data/cv";
@@ -9,7 +8,7 @@ interface Props {
   meta: Meta;
 }
 
-const { profile, meta } = Astro.props;
+const { profile } = Astro.props;
 const fullName = profile.firstName === PLACEHOLDER && profile.lastName === PLACEHOLDER
   ? PLACEHOLDER
   : `${profile.firstName} ${profile.lastName}`.trim();
@@ -24,10 +23,13 @@ const initials = profile.firstName === PLACEHOLDER ? "IT" : `${profile.firstName
       <p class="hero-title">{profile.title}</p>
       <p class="hero-tagline">{profile.tagline}</p>
       <div class="hero-actions" aria-label="Actions principales">
-        <CVDownloadButton cvPath={meta.cvPdfPath} />
+        <a class="button button-primary" href="#projets">
+          <Icon name="sparkles" size={18} />
+          <span>Voir ce que je construis</span>
+        </a>
         <a class="button button-secondary" href="#contact">
           <Icon name="mail" size={18} />
-          <span>Me contacter</span>
+          <span>Discutons</span>
         </a>
       </div>
     </div>
@@ -47,7 +49,7 @@ const initials = profile.firstName === PLACEHOLDER ? "IT" : `${profile.firstName
         </div>
         <div>
           <dt>Positionnement</dt>
-          <dd>Support IT, coordination et IA appliquée</dd>
+          <dd>Support IT le jour, outils web &amp; IA le reste du temps</dd>
         </div>
       </dl>
     </div>

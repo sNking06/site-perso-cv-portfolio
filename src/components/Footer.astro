@@ -1,5 +1,4 @@
 ---
-import CVDownloadButton from "./CVDownloadButton.astro";
 import type { Meta, SectionCopy } from "../data/cv";
 
 interface Props {
@@ -7,14 +6,14 @@ interface Props {
   meta: Meta;
 }
 
-const { navigation, meta } = Astro.props;
+const { navigation } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <div class="container footer-inner">
     <div>
-      <p class="footer-title">Support IT, coordination et IA appliquée</p>
+      <p class="footer-title">Construit avec Astro, publié sur GitHub Pages — le code de ce site est public aussi.</p>
     </div>
     <nav aria-label="Navigation de pied de page">
       <ul>
@@ -23,7 +22,6 @@ const year = new Date().getFullYear();
         ))}
       </ul>
     </nav>
-    <CVDownloadButton cvPath={meta.cvPdfPath} variant="secondary" compact />
     <p class="copyright">© {year}</p>
   </div>
 </footer>
@@ -37,7 +35,7 @@ const year = new Date().getFullYear();
 
   .footer-inner {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    grid-template-columns: minmax(0, 1fr) auto auto;
     gap: 1.25rem;
     align-items: center;
   }

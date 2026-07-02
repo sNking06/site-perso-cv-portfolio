@@ -1,5 +1,4 @@
 ---
-import CVDownloadButton from "./CVDownloadButton.astro";
 import Icon from "./Icon.astro";
 import { PLACEHOLDER } from "../data/cv";
 import type { Meta, Profile, SectionCopy } from "../data/cv";
@@ -10,7 +9,7 @@ interface Props {
   profile: Profile;
 }
 
-const { navigation, meta, profile } = Astro.props;
+const { navigation, profile } = Astro.props;
 const hasPublicName = profile.firstName !== PLACEHOLDER && profile.lastName !== PLACEHOLDER;
 const brandInitials = hasPublicName ? `${profile.firstName.slice(0, 1)}${profile.lastName.slice(0, 1)}` : "IT";
 const brandText = hasPublicName ? `${profile.firstName} ${profile.lastName}` : "Portfolio";
@@ -35,7 +34,7 @@ const brandText = hasPublicName ? `${profile.firstName} ${profile.lastName}` : "
           <li><a href={`#${item.id}`}>{item.navLabel}</a></li>
         ))}
       </ul>
-      <CVDownloadButton cvPath={meta.cvPdfPath} compact />
+      <a class="button button-primary" href="#contact">Discutons</a>
     </nav>
   </div>
 </header>
