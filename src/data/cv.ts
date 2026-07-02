@@ -381,6 +381,5 @@ export const navigation = [
   cv.sections.skills,
   cv.sections.experience,
   cv.sections.projects,
-  cv.sections.credentials,
   cv.sections.contact,
 ] as const;

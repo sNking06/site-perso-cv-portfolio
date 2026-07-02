@@ -1,6 +1,5 @@
 ---
 import About from "../components/About.astro";
-import Certifications from "../components/Certifications.astro";
 import Contact from "../components/Contact.astro";
 import ExperienceTimeline from "../components/ExperienceTimeline.astro";
 import Hero from "../components/Hero.astro";
@@ -24,9 +23,6 @@ import { cv } from "../data/cv";
   </SectionWrapper>
   <SectionWrapper section={cv.sections.projects}>
     <Projects projects={cv.projects} />
-  </SectionWrapper>
-  <SectionWrapper section={cv.sections.credentials}>
-    <Certifications certifications={cv.certifications} education={cv.education} languages={cv.languages} />
   </SectionWrapper>
   <SectionWrapper section={cv.sections.contact}>
     <Contact contact={cv.contact} socialLinks={cv.socialLinks} profile={cv.profile} />
