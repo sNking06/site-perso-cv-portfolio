@@ -1,0 +1,129 @@
+---
+import Icon from "./Icon.astro";
+import type { Project } from "../data/cv";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article class={`project-card surface-card reveal ${project.featured ? "is-featured" : ""}`}>
+  {project.image && (
+    <img class="project-image" src={project.image.src} alt={project.image.alt} width="720" height="405" loading="lazy" />
+  )}
+  <div class="project-body">
+    <h3>{project.name}</h3>
+    <p class="description">{project.description}</p>
+    <dl>
+      {project.problem && <div><dt>Problème</dt><dd>{project.problem}</dd></div>}
+      {project.solution && <div><dt>Solution</dt><dd>{project.solution}</dd></div>}
+      {project.result && <div><dt>Résultat</dt><dd>{project.result}</dd></div>}
+    </dl>
+    <ul class="tags" aria-label="Technologies utilisées">
+      {project.technologies.map((technology) => <li>{technology}</li>)}
+    </ul>
+    <div class="project-links">
+      {project.links.map((link) => (
+        <a href={link.url} target={link.url.startsWith("#") ? undefined : "_blank"} rel={link.url.startsWith("#") ? undefined : "noopener noreferrer"}>
+          <span>{link.label}</span>
+          {!link.url.startsWith("#") && <Icon name="external-link" size={16} />}
+        </a>
+      ))}
+    </div>
+  </div>
+</article>
+
+<style>
+  .project-card {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    transition: box-shadow 180ms ease, transform 180ms ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .project-image {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    object-fit: cover;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .project-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 1.25rem;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+
+  .description {
+    margin: 0.7rem 0 0;
+    color: var(--color-muted);
+  }
+
+  dl {
+    display: grid;
+    gap: 0.65rem;
+    margin: 1rem 0 0;
+  }
+
+  dt {
+    color: var(--color-subtle);
+    font-size: 0.76rem;
+    font-weight: 850;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 0.1rem 0 0;
+    color: var(--color-muted);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tags li {
+    border-radius: 999px;
+    background: var(--color-accent-soft);
+    color: var(--color-accent-dark);
+    padding: 0.3rem 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: auto;
+    padding-top: 1.2rem;
+  }
+
+  .project-links a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: 800;
+    text-decoration: none;
+  }
+</style>

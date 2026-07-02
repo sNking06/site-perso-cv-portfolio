@@ -1,0 +1,87 @@
+---
+import CVDownloadButton from "./CVDownloadButton.astro";
+import type { Meta, SectionCopy } from "../data/cv";
+
+interface Props {
+  navigation: readonly SectionCopy[];
+  meta: Meta;
+}
+
+const { navigation, meta } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <p class="footer-title">Support IT, coordination et IA appliquée</p>
+    </div>
+    <nav aria-label="Navigation de pied de page">
+      <ul>
+        {navigation.map((item) => (
+          <li><a href={`#${item.id}`}>{item.navLabel}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <CVDownloadButton cvPath={meta.cvPdfPath} variant="secondary" compact />
+    <p class="copyright">© {year}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding-block: 2rem;
+    background: var(--color-surface);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  .footer-title,
+  .copyright {
+    margin: 0;
+  }
+
+  .footer-title {
+    font-weight: 850;
+  }
+
+  .copyright {
+    color: var(--color-muted);
+    font-size: 0.92rem;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    color: var(--color-muted);
+    font-weight: 750;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 860px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+  }
+</style>

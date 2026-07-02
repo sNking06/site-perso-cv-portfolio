@@ -1,0 +1,21 @@
+---
+import type { SectionCopy } from "../data/cv";
+
+interface Props {
+  section: SectionCopy;
+  className?: string;
+}
+
+const { section, className = "" } = Astro.props;
+const titleId = `${section.id}-titre`;
+---
+
+<section id={section.id} class={`section ${className}`} aria-labelledby={titleId}>
+  <div class="container">
+    <header class="section-header reveal">
+      <h2 id={titleId} class="section-title">{section.title}</h2>
+      {section.intro && <p class="section-intro">{section.intro}</p>}
+    </header>
+    <slot />
+  </div>
+</section>

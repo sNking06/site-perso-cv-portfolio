@@ -1,0 +1,86 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { cv, navigation } from "../data/cv";
+import "@fontsource-variable/inter/wght.css";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const title = Astro.props.title ?? cv.meta.siteTitle;
+const description = Astro.props.description ?? cv.meta.siteDescription;
+const canonicalUrl = new URL(Astro.url.pathname, cv.meta.siteUrl).toString();
+const ogImageUrl = new URL(cv.meta.ogImage, cv.meta.siteUrl).toString();
+const fullName = `${cv.profile.firstName} ${cv.profile.lastName}`.trim();
+const sameAs = cv.socialLinks.map((link) => link.url).filter((url) => url && !url.startsWith("#"));
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: fullName,
+  jobTitle: cv.profile.title,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: cv.profile.location,
+  },
+  email: cv.contact.email.includes("@") ? cv.contact.email : undefined,
+  sameAs,
+};
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="theme-color" content="#FAFAFA" />
+    <script is:inline>document.documentElement.classList.add("js");</script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+    <Header navigation={navigation} meta={cv.meta} />
+    <main id="contenu">
+      <slot />
+    </main>
+    <Footer navigation={navigation} meta={cv.meta} />
+    <script>
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const revealTargets = document.querySelectorAll(".reveal");
+
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        revealTargets.forEach((target) => target.classList.add("is-visible"));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+
+        revealTargets.forEach((target) => observer.observe(target));
+      }
+    </script>
+  </body>
+</html>

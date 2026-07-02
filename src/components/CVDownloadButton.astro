@@ -1,0 +1,17 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  cvPath: string;
+  variant?: "primary" | "secondary";
+  compact?: boolean;
+}
+
+const { cvPath, variant = "primary", compact = false } = Astro.props;
+const className = `button button-${variant}`;
+---
+
+<a class={className} href={cvPath} download aria-label="Télécharger mon CV au format PDF">
+  <Icon name="download" size={18} />
+  <span>{compact ? "CV" : "Télécharger mon CV"}</span>
+</a>

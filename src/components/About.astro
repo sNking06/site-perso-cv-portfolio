@@ -1,0 +1,62 @@
+---
+import type { Profile } from "../data/cv";
+
+interface Props {
+  profile: Profile;
+}
+
+const { profile } = Astro.props;
+---
+
+<div class="about-grid reveal">
+  <div class="about-copy">
+    {profile.summary.map((paragraph) => <p>{paragraph}</p>)}
+  </div>
+  <aside class="about-note surface-card" aria-label="Objectif affiché">
+    <h3>Objectif</h3>
+    <p>{profile.availability}</p>
+  </aside>
+</div>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 330px);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: start;
+  }
+
+  .about-copy {
+    max-width: 760px;
+  }
+
+  .about-copy p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: clamp(1.02rem, 2vw, 1.16rem);
+  }
+
+  .about-copy p + p {
+    margin-top: 1rem;
+  }
+
+  .about-note {
+    padding: 1.25rem;
+  }
+
+  .about-note h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .about-note p {
+    margin: 0.5rem 0 0;
+    color: var(--color-muted);
+  }
+
+  @media (max-width: 760px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

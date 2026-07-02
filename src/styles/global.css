@@ -1,0 +1,202 @@
+:root {
+  color-scheme: light;
+  --color-bg: #fafafa;
+  --color-surface: #ffffff;
+  --color-text: #111827;
+  --color-muted: #4b5563;
+  --color-subtle: #6b7280;
+  --color-border: #e5e7eb;
+  --color-accent: #2563eb;
+  --color-accent-dark: #1d4ed8;
+  --color-accent-soft: #eff6ff;
+  --shadow-soft: 0 14px 36px rgb(17 24 39 / 0.08);
+  --shadow-card: 0 10px 24px rgb(17 24 39 / 0.06);
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --container: 1100px;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --section-space: clamp(4rem, 9vw, 8rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--color-accent-dark);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-accent), white 20%);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  inset: 1rem auto auto 1rem;
+  z-index: 1000;
+  transform: translateY(-150%);
+  border-radius: var(--radius-sm);
+  background: var(--color-text);
+  color: white;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.container {
+  width: min(100% - 2rem, var(--container));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--section-space);
+  scroll-margin-top: 5.5rem;
+}
+
+.section + .section {
+  border-top: 1px solid var(--color-border);
+}
+
+.section-header {
+  max-width: 720px;
+  margin-bottom: clamp(1.75rem, 4vw, 3rem);
+}
+
+.section-title {
+  margin: 0;
+  font-size: clamp(2rem, 4.4vw, 3.35rem);
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.section-intro {
+  margin: 0.8rem 0 0;
+  color: var(--color-muted);
+  font-size: clamp(1rem, 2vw, 1.125rem);
+}
+
+.button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: var(--color-accent);
+  color: white;
+  box-shadow: 0 10px 22px rgb(37 99 235 / 0.22);
+}
+
+.button-primary:hover {
+  background: var(--color-accent-dark);
+  color: white;
+}
+
+.button-secondary {
+  border-color: color-mix(in srgb, var(--color-accent), white 35%);
+  background: transparent;
+  color: var(--color-accent);
+}
+
+.button-secondary:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.placeholder {
+  border-radius: 0.35rem;
+  background: #f3f4f6;
+  color: #374151;
+  font-weight: 700;
+}
+
+.surface-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.reveal {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 260ms ease, transform 260ms ease;
+  }
+
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

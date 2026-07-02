@@ -1,0 +1,124 @@
+---
+import Icon from "./Icon.astro";
+import type { Certification, Education, Language } from "../data/cv";
+
+interface Props {
+  certifications: Certification[];
+  education: Education[];
+  languages: Language[];
+}
+
+const { certifications, education, languages } = Astro.props;
+---
+
+<div class="credentials-grid">
+  <article class="credential-block surface-card reveal">
+    <div class="block-title">
+      <Icon name="graduation-cap" />
+      <h3>Formations</h3>
+    </div>
+    <ul>
+      {education.map((item) => (
+        <li>
+          <strong>{item.degree}</strong>
+          <span>{item.school} · {item.year}</span>
+          {item.description && <p>{item.description}</p>}
+        </li>
+      ))}
+    </ul>
+  </article>
+
+  <article class="credential-block surface-card reveal">
+    <div class="block-title">
+      <Icon name="award" />
+      <h3>Certifications</h3>
+    </div>
+    <ul>
+      {certifications.map((item) => (
+        <li>
+          <strong>{item.name}</strong>
+          <span>{item.issuer} · {item.year} · {item.status}</span>
+          {item.verifyUrl && <a href={item.verifyUrl} target="_blank" rel="noopener noreferrer">Vérifier <Icon name="external-link" size={14} /></a>}
+        </li>
+      ))}
+    </ul>
+  </article>
+
+  <article class="credential-block surface-card reveal">
+    <div class="block-title">
+      <Icon name="languages" />
+      <h3>Langues</h3>
+    </div>
+    <ul>
+      {languages.map((item) => (
+        <li>
+          <strong>{item.name}</strong>
+          <span>{item.level}</span>
+        </li>
+      ))}
+    </ul>
+  </article>
+</div>
+
+<style>
+  .credentials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .credential-block {
+    padding: 1.25rem;
+  }
+
+  .block-title {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--color-accent);
+  }
+
+  h3 {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 1.08rem;
+  }
+
+  ul {
+    display: grid;
+    gap: 1rem;
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  strong {
+    line-height: 1.35;
+  }
+
+  span,
+  p {
+    margin: 0;
+    color: var(--color-muted);
+  }
+
+  a {
+    display: inline-flex;
+    min-height: 36px;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  @media (max-width: 900px) {
+    .credentials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,132 @@
+---
+import Icon from "./Icon.astro";
+import type { Experience } from "../data/cv";
+
+interface Props {
+  experiences: Experience[];
+}
+
+const { experiences } = Astro.props;
+
+const formatDate = (value: string | null) => {
+  if (value === null) return "Aujourd'hui";
+  if (/^\d{4}-\d{2}$/.test(value)) {
+    return new Intl.DateTimeFormat("fr-FR", { month: "short", year: "numeric" }).format(new Date(`${value}-01T00:00:00`));
+  }
+  return value;
+};
+---
+
+<ol class="timeline">
+  {experiences.map((experience) => (
+    <li class="timeline-item reveal">
+      <article class="timeline-card surface-card">
+        <div class="timeline-marker" aria-hidden="true"><Icon name="calendar" size={18} /></div>
+        <div class="timeline-content">
+          <p class="dates">
+            <time datetime={experience.startDate}>{formatDate(experience.startDate)}</time>
+            <span> - </span>
+            {experience.endDate ? <time datetime={experience.endDate}>{formatDate(experience.endDate)}</time> : <span>Aujourd'hui</span>}
+          </p>
+          <h3>{experience.role}</h3>
+          <p class="meta">{experience.company} · {experience.location}</p>
+          <ul>
+            {experience.highlights.map((highlight) => <li>{highlight}</li>)}
+          </ul>
+        </div>
+      </article>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .timeline {
+    position: relative;
+    display: grid;
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0 0 0 1.2rem;
+    list-style: none;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 1.2rem;
+    width: 2px;
+    background: var(--color-border);
+  }
+
+  .timeline-item {
+    position: relative;
+  }
+
+  .timeline-card {
+    position: relative;
+    margin-left: 1.6rem;
+    padding: 1.25rem;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    top: 1.25rem;
+    left: -2.75rem;
+    display: grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, var(--color-accent), white 35%);
+    border-radius: 50%;
+    background: var(--color-surface);
+    color: var(--color-accent);
+  }
+
+  .dates {
+    margin: 0;
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+
+  h3 {
+    margin: 0.35rem 0 0;
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    line-height: 1.25;
+  }
+
+  .meta {
+    margin: 0.3rem 0 0;
+    color: var(--color-muted);
+    font-weight: 700;
+  }
+
+  ul {
+    margin: 0.9rem 0 0;
+    padding-left: 1.2rem;
+    color: var(--color-muted);
+  }
+
+  li + li {
+    margin-top: 0.45rem;
+  }
+
+  @media (max-width: 560px) {
+    .timeline {
+      padding-left: 0.6rem;
+    }
+
+    .timeline::before {
+      left: 0.6rem;
+    }
+
+    .timeline-card {
+      margin-left: 1.2rem;
+    }
+
+    .timeline-marker {
+      left: -2.45rem;
+    }
+  }
+</style>
