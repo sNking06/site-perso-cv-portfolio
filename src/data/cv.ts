@@ -128,19 +128,25 @@ export interface CvData {
   meta: Meta;
 }
 
+const siteUrl = import.meta.env.SITE;
+
 export const cv: CvData = {
   profile: {
-    firstName: PLACEHOLDER,
-    lastName: PLACEHOLDER,
-    title: "Coordinateur Technicien Informatique - HelpDesk | Spécialisation IA",
-    tagline: PLACEHOLDER,
+    firstName: "Steven",
+    lastName: "LEBLAN",
+    title: "Technicien Support & Référent ITSM",
+    tagline: "Support IT, ITSM et automatisation avec les LLM.",
     summary: [
-      PLACEHOLDER,
-      PLACEHOLDER,
-      PLACEHOLDER,
+      "Je travaille dans le support IT, avec une pratique orientée hotline, proxy et accompagnement utilisateur.",
+      "Passionné par la technologie, j'ai approfondi l'IA avec l'arrivée des LLM et leurs usages concrets dans les outils du quotidien.",
+      "Mon objectif actuel est une présentation professionnelle simple, centrée sur le support IT, l'ITSM et les projets publics.",
     ],
-    location: PLACEHOLDER,
-    availability: PLACEHOLDER,
+    location: "Cannes",
+    availability: "En veille",
+    photo: {
+      src: "/images/profile.jpg",
+      alt: "Photo de profil de Steven LEBLAN",
+    },
   },
   sections: {
     about: {
@@ -184,27 +190,45 @@ export const cv: CvData = {
     {
       category: "Support & HelpDesk",
       icon: "headphones",
-      items: [{ name: PLACEHOLDER, level: PLACEHOLDER }],
+      items: [
+        { name: "Support IT hotline", level: "avancé" },
+        { name: "Proxy support", level: "avancé" },
+        { name: "Accompagnement utilisateurs", level: "avancé" },
+      ],
     },
     {
       category: "Systèmes & Réseaux",
       icon: "network",
-      items: [{ name: PLACEHOLDER, level: PLACEHOLDER }],
+      items: [{ name: "Systèmes & réseaux", level: "courant" }],
     },
     {
       category: "Coordination",
       icon: "users",
-      items: [{ name: PLACEHOLDER, level: PLACEHOLDER }],
+      items: [
+        { name: "Référent ITSM", level: "courant" },
+        { name: "Suivi et priorisation", level: "courant" },
+      ],
     },
     {
       category: "IA & Automatisation",
       icon: "sparkles",
-      items: [{ name: PLACEHOLDER, level: PLACEHOLDER }],
+      items: [
+        { name: "LLM", level: "avancé" },
+        { name: "Codex", level: "avancé" },
+        { name: "Claude", level: "avancé" },
+        { name: "Power Automate", level: "avancé" },
+      ],
     },
     {
       category: "Outils",
       icon: "wrench",
-      items: [{ name: PLACEHOLDER, level: PLACEHOLDER }],
+      items: [
+        { name: "VSCode" },
+        { name: "Power BI" },
+        { name: "Power Automate" },
+        { name: "Codex" },
+        { name: "Claude" },
+      ],
     },
   ],
   experiences: [
@@ -219,14 +243,53 @@ export const cv: CvData = {
   ],
   projects: [
     {
-      name: PLACEHOLDER,
-      description: PLACEHOLDER,
-      problem: PLACEHOLDER,
-      solution: PLACEHOLDER,
-      result: PLACEHOLDER,
-      technologies: [PLACEHOLDER],
-      links: [{ label: PLACEHOLDER, url: "#" }],
+      name: "DeadlockMentor",
+      description: "Application web frontend-first pour interroger l'API Deadlock et générer un rapport de coaching côté client.",
+      problem: "Analyser rapidement les données publiques Deadlock d'un joueur.",
+      solution: "Interface statique qui interroge l'API Deadlock pour la recherche joueur, le leaderboard et l'historique de matchs.",
+      result: "Rapport de coaching généré côté client, déployable sur GitHub Pages.",
+      technologies: ["JavaScript", "CSS", "HTML", "GitHub Pages"],
+      links: [
+        { label: "GitHub", url: "https://github.com/sNking06/DeadlockMentor" },
+        { label: "Démo", url: "https://snking06.github.io/DeadlockMentor/" },
+      ],
       featured: true,
+    },
+    {
+      name: "POE2 Craft Mentor",
+      description: "Site de conseil craft POE2 qui recommande une méthode, des currencies et un plan d'action selon l'objectif de craft.",
+      problem: "Choisir une méthode de craft POE2 adaptée au résultat voulu et au budget.",
+      solution: "Application statique qui analyse les lignes souhaitées, le type d'item et le budget pour recommander une stratégie.",
+      result: "Déploiement GitHub Pages avec génération d'un snapshot économie depuis PoE2DB.",
+      technologies: ["JavaScript", "HTML", "CSS", "GitHub Pages"],
+      links: [
+        { label: "GitHub", url: "https://github.com/sNking06/poe2-craft-mentor" },
+        { label: "Démo", url: "https://snking06.github.io/poe2-craft-mentor/" },
+      ],
+      featured: true,
+    },
+    {
+      name: "PoE2 Craft Helper",
+      description: "Guide de crafting intelligent pour Path of Exile 2 avec simulateur interactif, recommandations et outils de comparaison.",
+      problem: "Aider une guilde ou un joueur à choisir et simuler des stratégies de craft efficacement.",
+      solution: "Outil web responsive avec analyse, estimations de coûts, simulateur RNG et comparateur de stratégies.",
+      result: "Application publique disponible sur GitHub Pages.",
+      technologies: ["JavaScript", "CSS", "HTML", "Chart.js", "GitHub Pages"],
+      links: [
+        { label: "GitHub", url: "https://github.com/sNking06/poe2-craft-helper" },
+        { label: "Démo", url: "https://snking06.github.io/poe2-craft-helper/" },
+      ],
+      featured: false,
+    },
+    {
+      name: "albion-market-helper",
+      description: "Projet Flask de base avec instructions Docker.",
+      problem: PLACEHOLDER,
+      solution: "Template Flask avec build et lancement Docker documentés.",
+      result: PLACEHOLDER,
+      technologies: ["Dockerfile", "Python", "Flask"],
+      links: [{ label: "GitHub", url: "https://github.com/sNking06/albion-market-helper" }],
+      featured: false,
     },
   ],
   certifications: [
@@ -247,18 +310,18 @@ export const cv: CvData = {
   ],
   languages: [{ name: PLACEHOLDER, level: PLACEHOLDER }],
   contact: {
-    email: PLACEHOLDER,
+    email: "s.leblan06@gmail.com",
     formEnabled: false,
   },
   socialLinks: [
-    { platform: "LinkedIn", url: "#", label: PLACEHOLDER },
-    { platform: "GitHub", url: "#", label: PLACEHOLDER },
+    { platform: "LinkedIn", url: "https://www.linkedin.com/in/steven-leblan-416106b1/", label: "Profil LinkedIn" },
+    { platform: "GitHub", url: "https://github.com/sNking06", label: "Profil GitHub" },
   ],
   meta: {
-    siteTitle: "[INFORMATION À FOURNIR] - Coordinateur IT HelpDesk",
+    siteTitle: "Steven LEBLAN - Technicien Support & Référent ITSM",
     siteDescription:
-      "Portfolio professionnel d'un coordinateur technicien informatique HelpDesk en spécialisation IA.",
-    siteUrl: "https://example.com",
+      "Portfolio professionnel de Steven LEBLAN, technicien support et référent ITSM en veille sur l'IA et l'automatisation.",
+    siteUrl,
     ogImage: "/og-image.png",
     cvPdfPath: "/cv.pdf",
   },

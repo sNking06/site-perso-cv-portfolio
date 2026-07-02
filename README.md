@@ -39,5 +39,12 @@ Les composants ne doivent pas contenir de données de CV en dur. Tout champ enco
 Le site est statique et peut être déployé sur Vercel, Netlify ou GitHub Pages. Après avoir choisi le domaine final, mettre à jour :
 
 - `site` dans `astro.config.mjs`
-- `cv.meta.siteUrl` dans `src/data/cv.ts`
-- l'URL du sitemap dans `public/robots.txt`
+
+Cette valeur est la source unique pour le canonical, Open Graph, JSON-LD, sitemap et `robots.txt`.
+
+## Checklist avant mise en ligne
+
+- Remplacer `public/cv.pdf` par le CV final.
+- Renseigner tous les champs utiles dans `src/data/cv.ts`.
+- Définir le domaine final dans `astro.config.mjs`.
+- Lancer Lighthouse mobile et vérifier un score d'au moins 95 sur les 4 axes.
