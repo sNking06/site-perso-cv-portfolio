@@ -235,12 +235,59 @@ export const cv: CvData = {
   ],
   experiences: [
     {
-      role: PLACEHOLDER,
-      company: PLACEHOLDER,
+      role: "Coordinateur support technique",
+      company: "DCS EASYWARE",
+      location: "Valbonne, Provence-Alpes-Côte d'Azur, France · Sur site",
+      startDate: "Février 2021",
+      endDate: null,
+      highlights: [
+        "Coordination de l'équipe informatique et supervision des opérations quotidiennes.",
+        "Objectif de qualité de service pour fournir des solutions informatiques fiables aux clients.",
+      ],
+    },
+    {
+      role: "Responsable Esport",
+      company: "HellSide Esport",
       location: PLACEHOLDER,
-      startDate: PLACEHOLDER,
-      endDate: PLACEHOLDER,
-      highlights: [PLACEHOLDER, PLACEHOLDER],
+      startDate: "Avril 2019",
+      endDate: "Mars 2020",
+      highlights: [
+        "Direction d'une équipe de joueurs et gestion de la logistique des événements et tournois.",
+        "Accompagnement des joueurs, amélioration de la stratégie événementielle et développement de l'engagement communautaire.",
+      ],
+    },
+    {
+      role: "Technicien informatique",
+      company: "Winpharma",
+      location: "Cannes, Provence-Alpes-Côte d'Azur, France",
+      startDate: "Novembre 2018",
+      endDate: "Février 2019",
+      highlights: [
+        "Support et interventions informatiques dans un contexte professionnel.",
+        "Compétences associées : Office 365, communication et support utilisateur.",
+      ],
+    },
+    {
+      role: "Community Manager",
+      company: "VR Infini",
+      location: "VR INFINI",
+      startDate: "2017",
+      endDate: "2019",
+      highlights: [
+        "Gestion de la présence de la marque sur les réseaux sociaux et organisation d'événements en ligne.",
+        "Relations publiques, animation de communauté et actions d'engagement pour renforcer la fidélité.",
+      ],
+    },
+    {
+      role: "TICE",
+      company: "Education National",
+      location: "Grasse / Le Rouret",
+      startDate: "2015",
+      endDate: "2017",
+      highlights: [
+        "Gestion de parcs informatiques, maintenance, installation et configuration d'équipements et logiciels.",
+        "Accompagnement des enseignants dans l'intégration des technologies et support aux besoins informatiques des établissements.",
+      ],
     },
   ],
   projects: [
